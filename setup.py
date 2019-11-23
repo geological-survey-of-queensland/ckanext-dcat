@@ -42,6 +42,7 @@ setup(
 
     [ckan.rdf.profiles]
     euro_dcat_ap=ckanext.dcat.profiles:EuropeanDCATAPProfile
+    dcat2=ckanext.dcat.profiles:DCAT2Profile
     schemaorg=ckanext.dcat.profiles:SchemaOrgProfile
 
     [paste.paster_command]
