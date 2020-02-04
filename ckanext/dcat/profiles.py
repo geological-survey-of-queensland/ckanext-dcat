@@ -31,6 +31,7 @@ LOCN = Namespace('http://www.w3.org/ns/locn#')
 GSP = Namespace('http://www.opengis.net/ont/geosparql#')
 OWL = Namespace('http://www.w3.org/2002/07/owl#')
 SPDX = Namespace('http://spdx.org/rdf/terms#')
+FREQ = Namespace('http://purl.org/cld/freq/')
 
 GEOJSON_IMT = 'https://www.iana.org/assignments/media-types/application/vnd.geo+json'
 
@@ -47,6 +48,7 @@ namespaces = {
     'gsp': GSP,
     'owl': OWL,
     'spdx': SPDX,
+    'freq': FREQ
 }
 
 PREFIX_MAILTO = u'mailto:'
@@ -1817,7 +1819,7 @@ class DCAT2Profile(RDFProfile):
             ('identifier', DCT.identifier, ['guid', 'id'], Literal),
             ('version', OWL.versionInfo, ['dcat_version'], Literal),
             ('version_notes', ADMS.versionNotes, None, Literal),
-            ('frequency', DCT.accrualPeriodicity, None, URIRefOrLiteral),
+            # frequency removed from here
             ('access_rights', DCT.accessRights, None, Literal),
             ('dcat_type', DCT.type, None, Literal),
             ('provenance', DCT.provenance, None, Literal),
@@ -2056,6 +2058,8 @@ class DCAT2Profile(RDFProfile):
                            URIRefOrLiteral(resource_dict['hash_algorithm'])))
 
                 g.add((distribution, SPDX.checksum, checksum))
+
+        # altered values from euro_dcat_ap profile
 
     def graph_from_catalog(self, catalog_dict, catalog_ref):
 
